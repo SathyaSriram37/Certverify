@@ -1,0 +1,72 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e29]:
+    - complementary [ref=e30]:
+      - generic [ref=e31]:
+        - generic [ref=e37]:
+          - generic [ref=e38]: CertVerify AI
+          - text: Production SaaS
+        - navigation [ref=e39]:
+          - link "Dashboard" [ref=e40] [cursor=pointer]:
+            - /url: /dashboard
+          - link "Upload Certificate" [ref=e46] [cursor=pointer]:
+            - /url: /upload
+          - link "Batch Verification" [ref=e50] [cursor=pointer]:
+            - /url: /batch
+          - link "Developer & B2B API" [ref=e55] [cursor=pointer]:
+            - /url: /developer
+          - link "Verification History" [ref=e60] [cursor=pointer]:
+            - /url: /history
+          - generic [ref=e65]: Staff Administration
+          - link "Admin Panel" [ref=e66] [cursor=pointer]:
+            - /url: /admin
+      - generic [ref=e69]:
+        - generic [ref=e70]:
+          - generic [ref=e71]: Senior QA Automation Tester
+          - generic [ref=e72]: ADMIN
+        - generic [ref=e73]: qa_tester@certverify.io
+        - button "Sign Out" [ref=e74] [cursor=pointer]
+    - generic [ref=e78]:
+      - banner [ref=e79]:
+        - generic [ref=e80]: Universal AI Certificate Verification
+        - link [ref=e83] [cursor=pointer]:
+          - /url: /upload
+          - button "New Verification" [ref=e84]
+      - main [ref=e88]:
+        - generic [ref=e836]:
+          - generic [ref=e837]:
+            - generic [ref=e838]:
+              - heading "Verification History" [level=1] [ref=e839]
+              - paragraph [ref=e840]: Complete archive of uploaded credentials and forensic evaluation records (1 total)
+            - link [ref=e841] [cursor=pointer]:
+              - /url: /upload
+              - button "Upload New Document" [ref=e842]
+          - generic [ref=e846]:
+            - generic [ref=e847]:
+              - heading "Document Archive" [level=3] [ref=e848]
+              - paragraph [ref=e849]: Track status, forensic findings, and download PDF audits
+            - table [ref=e853]:
+              - rowgroup [ref=e854]:
+                - row [ref=e855]:
+                  - columnheader "Document File" [ref=e856]
+                  - columnheader "Format" [ref=e857]
+                  - columnheader "Uploaded" [ref=e858]
+                  - columnheader "Job Status" [ref=e859]
+                  - columnheader "Risk Verdict" [ref=e860]
+                  - columnheader "Actions" [ref=e861]
+              - rowgroup [ref=e862]:
+                - row [ref=e863]:
+                  - cell "test_sample_iso.pdf" [ref=e864]
+                  - cell "PDF" [ref=e870]
+                  - cell "13 Nov 2026, 10:23" [ref=e871]
+                  - cell "Completed" [ref=e872]
+                  - cell "Verified (0/100)" [ref=e874]:
+                    - generic [ref=e875]:
+                      - generic [ref=e876]: Verified
+                      - generic [ref=e877]: (0/100)
+                  - cell [ref=e878]:
+                    - generic [ref=e879]:
+                      - link "Inspect" [ref=e880] [cursor=pointer]:
+                        - /url: /verify/7d112490-ce2f-4090-b2bf-5090136a3f4b
+                      - button [ref=e885] [cursor=pointer]
+                      - button [ref=e889] [cursor=pointer]
+  - generic [aria-hidden] [ref=e257]: "0"

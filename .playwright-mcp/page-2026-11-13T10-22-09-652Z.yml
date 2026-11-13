@@ -1,0 +1,51 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e29]:
+    - complementary [ref=e30]:
+      - generic [ref=e31]:
+        - generic [ref=e37]:
+          - generic [ref=e38]: CertVerify AI
+          - text: Production SaaS
+        - navigation [ref=e39]:
+          - link "Dashboard" [ref=e40] [cursor=pointer]:
+            - /url: /dashboard
+          - link "Upload Certificate" [ref=e46] [cursor=pointer]:
+            - /url: /upload
+          - link "Batch Verification" [ref=e50] [cursor=pointer]:
+            - /url: /batch
+          - link "Developer & B2B API" [ref=e55] [cursor=pointer]:
+            - /url: /developer
+          - link "Verification History" [ref=e60] [cursor=pointer]:
+            - /url: /history
+          - generic [ref=e65]: Staff Administration
+          - link "Admin Panel" [ref=e66] [cursor=pointer]:
+            - /url: /admin
+      - generic [ref=e69]:
+        - generic [ref=e70]:
+          - generic [ref=e71]: Senior QA Automation Tester
+          - generic [ref=e72]: ADMIN
+        - generic [ref=e73]: qa_tester@certverify.io
+        - button "Sign Out" [ref=e74] [cursor=pointer]
+    - generic [ref=e78]:
+      - banner [ref=e79]:
+        - generic [ref=e80]: Universal AI Certificate Verification
+        - link [ref=e83] [cursor=pointer]:
+          - /url: /upload
+          - button "New Verification" [ref=e84]
+      - main [ref=e88]:
+        - generic [ref=e332]:
+          - generic [ref=e334]:
+            - heading "Enterprise Bulk Verification" [level=1] [ref=e335]
+            - paragraph [ref=e340]: Verify batches of up to 50 certificates simultaneously or upload a single ZIP archive for instant campus-drive processing.
+          - generic [ref=e341]:
+            - generic [ref=e342]:
+              - heading "New Batch Upload" [level=3] [ref=e343]
+              - paragraph [ref=e344]: Select multiple PDF/image certificates or a single .ZIP file containing candidates' credentials.
+            - generic [ref=e346]:
+              - generic [ref=e347]:
+                - generic [ref=e348]: Batch Name / Reference (Optional)
+                - textbox "e.g., Campus Recruitment Drive 2026 - Batch A" [ref=e349]
+              - generic [ref=e351] [cursor=pointer]:
+                - paragraph [ref=e356]: Click to select or drag and drop files here
+                - paragraph [ref=e357]: Supports .PDF, .PNG, .JPG files, or a single .ZIP folder (Max 10MB per file)
+              - button "Launch Batch Verification" [disabled]
+  - generic [aria-hidden] [ref=e257]: "0"

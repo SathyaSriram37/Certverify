@@ -1,0 +1,224 @@
+- generic [ref=f4e3]:
+  - complementary [ref=f4e4]:
+    - generic [ref=f4e5]:
+      - generic [ref=f4e11]:
+        - generic [ref=f4e12]: CertVerify AI
+        - text: Production SaaS
+      - navigation [ref=f4e13]:
+        - link "Dashboard" [ref=f4e14] [cursor=pointer]:
+          - /url: /dashboard
+        - link "Upload Certificate" [ref=f4e20] [cursor=pointer]:
+          - /url: /upload
+        - link "Verification History" [ref=f4e24] [cursor=pointer]:
+          - /url: /history
+    - generic [ref=f4e29]:
+      - generic [ref=f4e30]:
+        - generic [ref=f4e31]: Harishma
+        - generic [ref=f4e32]: USER
+      - generic [ref=f4e33]: 24harishma-ugds@sfrcollege.edu.in
+      - button "Sign Out" [ref=f4e34] [cursor=pointer]
+  - generic [ref=f4e38]:
+    - banner [ref=f4e39]:
+      - generic [ref=f4e40]: Universal AI Certificate Verification
+      - link [ref=f4e43] [cursor=pointer]:
+        - /url: /upload
+        - button "New Verification" [ref=f4e44]
+    - main [ref=f4e48]:
+      - generic [ref=f4e49]:
+        - generic [ref=f4e50]:
+          - link [ref=f4e51] [cursor=pointer]:
+            - /url: /history
+            - button "Back to History" [ref=f4e52]
+          - generic [ref=f4e55]:
+            - generic [ref=f4e56]: "JOB ID: 8540dce3-cf1a-4aff-bdd3-90b29f0f3036"
+            - button "Refresh" [ref=f4e61] [cursor=pointer]
+        - generic [ref=f4e67]:
+          - button "Download PDF Audit Report" [ref=f4e69] [cursor=pointer]
+          - generic [ref=f4e75]:
+            - generic [ref=f4e76]:
+              - generic [ref=f4e81]:
+                - generic [ref=f4e82]: "41"
+                - generic [ref=f4e83]: / 100 Risk
+              - generic [ref=f4e84]: MEDIUM RISK LEVEL
+            - generic [ref=f4e86]:
+              - generic [ref=f4e90]:
+                - generic [ref=f4e91]: Automated Audit Determination
+                - text: POTENTIAL FORGERY / SUSPICIOUS
+              - generic [ref=f4e92]:
+                - button "AI FORENSIC REASONING & SYNTHESIS" [ref=f4e93] [cursor=pointer]
+                - paragraph [ref=f4e97]: "CertVerify AI analyzed this certificate across 11 enterprise verification modules. Passed checks: Image Forensics, Duplicate Detection. Flagged issues: No text extracted from document; UNKNOWN (0% confidence); Partial or limited entity detection. Skipped checks: Iso Verification, Logo Similarity, Pdf Forensics. Notice: This automated assessment is based on public registers, digital forensics, and neural pattern analysis. Final Determination: SUSPICIOUS with an aggregate Risk Score of 41/100."
+        - generic [ref=f4e98]:
+          - generic [ref=f4e99]:
+            - heading "Verification Module Breakdown" [level=3] [ref=f4e100]
+            - paragraph [ref=f4e101]: Detailed outcomes from each individual AI and forensic verification engine (click row to inspect JSON)
+          - table [ref=f4e104]:
+            - rowgroup [ref=f4e105]:
+              - row [ref=f4e106]:
+                - columnheader [ref=f4e107]
+                - columnheader "Analysis Module" [ref=f4e108]
+                - columnheader "Outcome" [ref=f4e109]
+                - columnheader "Finding Summary" [ref=f4e110]
+                - columnheader "Confidence" [ref=f4e111]
+            - rowgroup [ref=f4e112]:
+              - row [ref=f4e113] [cursor=pointer]:
+                - cell [ref=f4e114]
+                - cell "OCR EXTRACTION" [ref=f4e117]
+                - cell "FAIL" [ref=f4e118]
+                - cell "No text extracted from document" [ref=f4e124]
+                - cell "0%" [ref=f4e125]
+              - row [ref=f4e126] [cursor=pointer]:
+                - cell [ref=f4e127]
+                - cell "CLASSIFICATION" [ref=f4e130]
+                - cell "WARNING" [ref=f4e131]
+                - cell "UNKNOWN (0% confidence)" [ref=f4e135]
+                - cell "0%" [ref=f4e136]
+              - row [ref=f4e137] [cursor=pointer]:
+                - cell [ref=f4e138]
+                - cell "ENTITY EXTRACTION" [ref=f4e141]
+                - cell "WARNING" [ref=f4e142]
+                - cell "Partial or limited entity detection" [ref=f4e146]
+                - cell "40%" [ref=f4e147]
+              - row [ref=f4e148] [cursor=pointer]:
+                - cell [ref=f4e149]
+                - cell "COMPANY INTELLIGENCE" [ref=f4e152]
+                - cell "FAIL" [ref=f4e153]
+                - cell "Issuing organization not verified in public records" [ref=f4e159]
+                - cell "0%" [ref=f4e160]
+              - row [ref=f4e161] [cursor=pointer]:
+                - cell [ref=f4e162]
+                - cell "ISO VERIFICATION" [ref=f4e165]
+                - cell "SKIPPED" [ref=f4e166]
+                - cell "NOT CLAIMED" [ref=f4e169]
+                - cell "—" [ref=f4e170]
+              - row [ref=f4e171] [cursor=pointer]:
+                - cell [ref=f4e172]
+                - cell "LOGO SIMILARITY" [ref=f4e175]
+                - cell "SKIPPED" [ref=f4e176]
+                - cell "Favicon/Brand icon not matched" [ref=f4e179]
+                - cell "—" [ref=f4e180]
+              - row [ref=f4e181] [cursor=pointer]:
+                - cell [ref=f4e182]
+                - cell "PDF FORENSICS" [ref=f4e185]
+                - cell "SKIPPED" [ref=f4e186]
+                - cell "Non-PDF document" [ref=f4e189]
+                - cell "—" [ref=f4e190]
+              - row [ref=f4e191] [cursor=pointer]:
+                - cell [ref=f4e192]
+                - cell "IMAGE FORENSICS" [ref=f4e195]
+                - cell "PASS" [ref=f4e196]
+                - cell "No image tampering or manipulation detected" [ref=f4e201]
+                - cell "90%" [ref=f4e202]
+              - row [ref=f4e203] [cursor=pointer]:
+                - cell [ref=f4e204]
+                - cell "QR CODE" [ref=f4e207]
+                - cell "SKIPPED" [ref=f4e208]
+                - cell "No QR code present on certificate" [ref=f4e211]
+                - cell "—" [ref=f4e212]
+              - row [ref=f4e213] [cursor=pointer]:
+                - cell [ref=f4e214]
+                - cell "DIGITAL SIGNATURE" [ref=f4e217]
+                - cell "SKIPPED" [ref=f4e218]
+                - cell "Not a PDF or no signature field" [ref=f4e221]
+                - cell "—" [ref=f4e222]
+              - row [ref=f4e223] [cursor=pointer]:
+                - cell [ref=f4e224]
+                - cell "DUPLICATE DETECTION" [ref=f4e227]
+                - cell "PASS" [ref=f4e228]
+                - cell "No duplicate or templated matches found" [ref=f4e233]
+                - cell "100%" [ref=f4e234]
+        - generic [ref=f4e235]:
+          - generic [ref=f4e237]:
+            - generic [ref=f4e238]:
+              - heading "Extracted Credential Data" [level=3] [ref=f4e239]
+              - paragraph [ref=f4e240]: OCR and structural entity extraction results
+            - generic [ref=f4e241]: UNKNOWN (0% confidence)
+          - table [ref=f4e244]:
+            - rowgroup [ref=f4e245]:
+              - row [ref=f4e246]:
+                - columnheader "Field" [ref=f4e247]
+                - columnheader "Extracted Value" [ref=f4e248]
+            - rowgroup [ref=f4e249]:
+              - row [ref=f4e250]:
+                - cell "Candidate Name" [ref=f4e251]
+                - cell "—" [ref=f4e252]
+              - row [ref=f4e253]:
+                - cell "Issuing Organization" [ref=f4e254]
+                - cell "—" [ref=f4e255]
+              - row [ref=f4e256]:
+                - cell "Issue Date" [ref=f4e257]
+                - cell "—" [ref=f4e258]
+              - row [ref=f4e259]:
+                - cell "Certificate Number / ID" [ref=f4e260]
+                - cell "—" [ref=f4e261]
+              - row [ref=f4e262]:
+                - cell "Official Website" [ref=f4e263]
+                - cell "—" [ref=f4e264]
+              - row [ref=f4e265]:
+                - cell "Email Address" [ref=f4e266]
+                - cell "—" [ref=f4e267]
+              - row [ref=f4e268]:
+                - cell "Signatory Authority" [ref=f4e269]
+                - cell "—" [ref=f4e270]
+        - generic [ref=f4e271]:
+          - generic [ref=f4e272]:
+            - heading "Company Intelligence & Registry Verification" [level=3] [ref=f4e273]
+            - paragraph [ref=f4e274]: Live web corroboration, SSL authenticity, and registry checks
+          - generic [ref=f4e276]:
+            - generic [ref=f4e277]:
+              - text: Organization Profile
+              - paragraph [ref=f4e278]: Not provided
+              - generic [ref=f4e279]:
+                - generic [ref=f4e280]: "Public Online Footprint:"
+                - generic [ref=f4e281]: Not Found
+              - generic [ref=f4e282]:
+                - generic [ref=f4e283]: "Gov Registry (MCA Hint):"
+                - generic [ref=f4e284]: Not Verified
+            - generic [ref=f4e285]:
+              - text: Web Domain & Brand Audit
+              - generic [ref=f4e286]: No website
+              - generic [ref=f4e291]:
+                - generic [ref=f4e292]: "Domain Active:"
+                - generic [ref=f4e293]: Inactive
+              - generic [ref=f4e294]:
+                - generic [ref=f4e295]: "Logo Match:"
+                - generic [ref=f4e296]: Not Checked
+              - generic [ref=f4e297]:
+                - generic [ref=f4e298]: "ISO Standards Claim:"
+                - generic [ref=f4e299]: NOT CLAIMED
+        - generic [ref=f4e300]:
+          - generic [ref=f4e302]:
+            - generic [ref=f4e303]:
+              - heading "Document Forensics & Manipulation Detection" [level=3] [ref=f4e304]
+              - paragraph [ref=f4e305]: Error Level Analysis (ELA), EXIF software signatures, and structural metadata
+            - generic [ref=f4e306]: CLEAN INTEGRITY
+          - generic [ref=f4e308]:
+            - generic [ref=f4e309]:
+              - generic [ref=f4e310]: ELA Difference Score
+              - text: "3.49"
+              - generic [ref=f4e311]: "Threshold: 25.0"
+            - generic [ref=f4e312]:
+              - generic [ref=f4e313]: Editing Software Signature
+              - generic [ref=f4e314]: None Detected
+            - generic [ref=f4e315]:
+              - generic [ref=f4e316]: PDF Font Families
+              - text: N/A
+        - generic [ref=f4e317]:
+          - generic [ref=f4e318]:
+            - heading "QR Code & Digital Signature Verification" [level=3] [ref=f4e319]
+            - paragraph [ref=f4e320]: Verification of embedded cryptographic signatures and encoded QR destination URLs
+          - generic [ref=f4e322]:
+            - generic [ref=f4e323]:
+              - generic [ref=f4e324]: QR Code Inspection
+              - paragraph [ref=f4e332]: No QR codes detected on document canvas.
+            - generic [ref=f4e333]:
+              - generic [ref=f4e334]: Cryptographic PDF Signature
+              - generic [ref=f4e341]:
+                - generic [ref=f4e342]: "Digital Signature Status:"
+                - generic [ref=f4e343]: Not Applicable
+        - generic [ref=f4e344]:
+          - generic [ref=f4e346]:
+            - generic [ref=f4e347]:
+              - heading "Duplicate & Template Forgery Detection" [level=3] [ref=f4e348]
+              - paragraph [ref=f4e349]: Visual perceptual hashing (pHash) and semantic text embedding similarity
+            - generic [ref=f4e350]: No duplicate or templated matches found
+          - generic [ref=f4e351]: No perceptual hash or text hash duplicates identified in the system repository. Document appears visually and semantically unique.

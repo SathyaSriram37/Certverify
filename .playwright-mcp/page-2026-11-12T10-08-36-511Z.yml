@@ -1,0 +1,35 @@
+- generic [ref=f2e3]:
+  - complementary [ref=f2e4]:
+    - generic [ref=f2e5]:
+      - generic [ref=f2e11]:
+        - generic [ref=f2e12]: CertVerify AI
+        - text: Production SaaS
+      - navigation [ref=f2e13]:
+        - link "Dashboard" [ref=f2e14] [cursor=pointer]:
+          - /url: /dashboard
+        - link "Upload Certificate" [ref=f2e20] [cursor=pointer]:
+          - /url: /upload
+        - link "Verification History" [ref=f2e24] [cursor=pointer]:
+          - /url: /history
+    - generic [ref=f2e29]:
+      - generic [ref=f2e30]:
+        - generic [ref=f2e31]: Harishma
+        - generic [ref=f2e32]: USER
+      - generic [ref=f2e33]: 24harishma-ugds@sfrcollege.edu.in
+      - button "Sign Out" [ref=f2e34] [cursor=pointer]
+  - generic [ref=f2e38]:
+    - banner [ref=f2e39]:
+      - generic [ref=f2e40]: Universal AI Certificate Verification
+      - link [ref=f2e43] [cursor=pointer]:
+        - /url: /upload
+        - button "New Verification" [ref=f2e44]
+    - main [ref=f2e48]:
+      - generic [ref=f2e108]:
+        - generic [ref=f2e109]:
+          - link [ref=f2e110] [cursor=pointer]:
+            - /url: /history
+            - button "Back to History" [ref=f2e111]
+          - generic [ref=f2e114]:
+            - generic [ref=f2e115]: "JOB ID: 8540dce3-cf1a-4aff-bdd3-90b29f0f3036"
+            - button "Refresh" [disabled]
+        - paragraph [ref=f2e119]: Compiling comprehensive forensic report & metrics...

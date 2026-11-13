@@ -1,0 +1,52 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e29]:
+    - complementary [ref=e30]:
+      - generic [ref=e31]:
+        - generic [ref=e37]:
+          - generic [ref=e38]: CertVerify AI
+          - text: Production SaaS
+        - navigation [ref=e39]:
+          - link "Dashboard" [ref=e40] [cursor=pointer]:
+            - /url: /dashboard
+          - link "Upload Certificate" [ref=e46] [cursor=pointer]:
+            - /url: /upload
+          - link "Batch Verification" [ref=e50] [cursor=pointer]:
+            - /url: /batch
+          - link "Developer & B2B API" [ref=e55] [cursor=pointer]:
+            - /url: /developer
+          - link "Verification History" [ref=e60] [cursor=pointer]:
+            - /url: /history
+          - generic [ref=e65]: Staff Administration
+          - link "Admin Panel" [ref=e66] [cursor=pointer]:
+            - /url: /admin
+      - generic [ref=e69]:
+        - generic [ref=e70]:
+          - generic [ref=e71]: Senior QA Automation Tester
+          - generic [ref=e72]: ADMIN
+        - generic [ref=e73]: qa_tester@certverify.io
+        - button "Sign Out" [ref=e74] [cursor=pointer]
+    - generic [ref=e78]:
+      - banner [ref=e79]:
+        - generic [ref=e80]: Universal AI Certificate Verification
+        - link [ref=e83] [cursor=pointer]:
+          - /url: /upload
+          - button "New Verification" [ref=e84]
+      - main [ref=e88]:
+        - generic [ref=e359]:
+          - generic [ref=e360]:
+            - heading "Upload Certificate for Verification" [level=3] [ref=e361]
+            - paragraph [ref=e362]: Submit academic, employment, or government credentials for automated AI forgery analysis
+          - generic [ref=e364]:
+            - generic [ref=e375]:
+              - generic [ref=e376]: PDF
+              - generic [ref=e381]:
+                - heading "test_sample_iso.pdf" [level=4] [ref=e382]
+                - paragraph [ref=e383]: 0.00 MB • application/pdf
+                - generic [ref=e384]: Ready for verification
+            - generic [ref=e394]:
+              - generic [ref=e395]: Processing Document & Initializing AI Pipeline
+              - generic [ref=e396]: 90%
+          - generic [ref=e372]:
+            - generic [ref=e373]: End-to-end encrypted storage & automatic forensic tamper audit
+            - button "Analyzing..." [disabled]
+  - generic [aria-hidden] [ref=e257]: "0"

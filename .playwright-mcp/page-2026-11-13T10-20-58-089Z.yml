@@ -1,0 +1,66 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e29]:
+    - complementary [ref=e30]:
+      - generic [ref=e31]:
+        - generic [ref=e37]:
+          - generic [ref=e38]: CertVerify AI
+          - text: Production SaaS
+        - navigation [ref=e39]:
+          - link "Dashboard" [ref=e40] [cursor=pointer]:
+            - /url: /dashboard
+          - link "Upload Certificate" [ref=e46] [cursor=pointer]:
+            - /url: /upload
+          - link "Batch Verification" [ref=e50] [cursor=pointer]:
+            - /url: /batch
+          - link "Developer & B2B API" [ref=e55] [cursor=pointer]:
+            - /url: /developer
+          - link "Verification History" [ref=e60] [cursor=pointer]:
+            - /url: /history
+          - generic [ref=e65]: Staff Administration
+          - link "Admin Panel" [ref=e66] [cursor=pointer]:
+            - /url: /admin
+      - generic [ref=e69]:
+        - generic [ref=e70]:
+          - generic [ref=e71]: Senior QA Automation Tester
+          - generic [ref=e72]: ADMIN
+        - generic [ref=e73]: qa_tester@certverify.io
+        - button "Sign Out" [ref=e74] [cursor=pointer]
+    - generic [ref=e78]:
+      - banner [ref=e79]:
+        - generic [ref=e80]: Universal AI Certificate Verification
+        - link [ref=e83] [cursor=pointer]:
+          - /url: /upload
+          - button "New Verification" [ref=e84]
+      - main [ref=e88]:
+        - generic [ref=e206]:
+          - generic [ref=e207]:
+            - heading "Developer & B2B Integration Suite" [level=1] [ref=e208]
+            - paragraph [ref=e213]: Integrate CertVerify AI verification directly into your EdTech platforms, ATS, or HRMS applications via REST APIs and Webhooks.
+          - generic [ref=e214]:
+            - generic [ref=e215]:
+              - button "API Keys" [ref=e216] [cursor=pointer]
+              - button "Webhooks" [ref=e221] [cursor=pointer]
+              - button "API Reference & Code" [ref=e226] [cursor=pointer]
+            - generic [ref=e234]:
+              - generic [ref=e235]:
+                - generic [ref=e236]:
+                  - heading "Production API Keys" [level=3] [ref=e237]
+                  - paragraph [ref=e238]:
+                    - text: API keys authenticate programmatic requests to CertVerify AI endpoints. Pass via the
+                    - code [ref=e239]: X-API-Key
+                    - text: HTTP header.
+                - button "Generate New Key" [ref=e240] [cursor=pointer]
+              - table [ref=e244]:
+                - rowgroup [ref=e245]:
+                  - row [ref=e246]:
+                    - columnheader "Key Label" [ref=e247]
+                    - columnheader "Key Prefix" [ref=e248]
+                    - columnheader "Rate Limit" [ref=e249]
+                    - columnheader "Status" [ref=e250]
+                    - columnheader "Last Used" [ref=e251]
+                    - columnheader "Created" [ref=e252]
+                    - columnheader "Action" [ref=e253]
+                - rowgroup [ref=e254]:
+                  - row [ref=e255]:
+                    - cell "Loading API keys..." [ref=e256]
+  - generic [aria-hidden] [ref=e257]: "0"

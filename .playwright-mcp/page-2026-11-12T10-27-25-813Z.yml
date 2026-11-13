@@ -1,0 +1,35 @@
+- generic [ref=f4e3]:
+  - complementary [ref=f4e4]:
+    - generic [ref=f4e5]:
+      - generic [ref=f4e11]:
+        - generic [ref=f4e12]: CertVerify AI
+        - text: Production SaaS
+      - navigation [ref=f4e13]:
+        - link "Dashboard" [ref=f4e14] [cursor=pointer]:
+          - /url: /dashboard
+        - link "Upload Certificate" [ref=f4e20] [cursor=pointer]:
+          - /url: /upload
+        - link "Verification History" [ref=f4e24] [cursor=pointer]:
+          - /url: /history
+    - generic [ref=f4e29]:
+      - generic [ref=f4e30]:
+        - generic [ref=f4e31]: Harishma
+        - generic [ref=f4e32]: USER
+      - generic [ref=f4e33]: 24harishma-ugds@sfrcollege.edu.in
+      - button "Sign Out" [ref=f4e34] [cursor=pointer]
+  - generic [ref=f4e38]:
+    - banner [ref=f4e39]:
+      - generic [ref=f4e40]: Universal AI Certificate Verification
+      - link [ref=f4e43] [cursor=pointer]:
+        - /url: /upload
+        - button "New Verification" [ref=f4e44]
+    - main [ref=f4e48]:
+      - generic [ref=f4e49]:
+        - generic [ref=f4e50]:
+          - link [ref=f4e51] [cursor=pointer]:
+            - /url: /history
+            - button "Back to History" [ref=f4e52]
+          - generic [ref=f4e55]:
+            - generic [ref=f4e56]: "JOB ID: 8540dce3-cf1a-4aff-bdd3-90b29f0f3036"
+            - button "Refresh" [disabled]
+        - paragraph [ref=f4e60]: Loading verification pipeline status...

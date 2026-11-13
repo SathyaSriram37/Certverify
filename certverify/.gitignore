@@ -1,0 +1,49 @@
+# Python
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# Node / React Frontend
+node_modules/
+frontend/dist/
+frontend/node_modules/
+.npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment Secrets & Local Configs (Do NOT commit .env files)
+.env
+backend/.env
+frontend/.env
+*.env.local
+
+# Storage & Temp Files
+backend/storage/uploads/*
+backend/storage/temp/*
+!backend/storage/uploads/.gitkeep
+!backend/storage/temp/.gitkeep
+test_sample_*.pdf
+*.log
+
+# Playwright & Testing artifacts
+.playwright-mcp/
+test-results/
+playwright-report/
+
+# OS Specific
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+

@@ -1,0 +1,89 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e893]:
+    - complementary [ref=e894]:
+      - generic [ref=e895]:
+        - generic [ref=e901]:
+          - generic [ref=e902]: CertVerify AI
+          - text: Production SaaS
+        - navigation [ref=e903]:
+          - link "Dashboard" [ref=e904] [cursor=pointer]:
+            - /url: /dashboard
+          - link "Upload Certificate" [ref=e910] [cursor=pointer]:
+            - /url: /upload
+          - link "Batch Verification" [ref=e914] [cursor=pointer]:
+            - /url: /batch
+          - link "Developer & B2B API" [ref=e919] [cursor=pointer]:
+            - /url: /developer
+          - link "Verification History" [ref=e924] [cursor=pointer]:
+            - /url: /history
+          - generic [ref=e929]: Staff Administration
+          - link "Admin Panel" [ref=e930] [cursor=pointer]:
+            - /url: /admin
+      - generic [ref=e933]:
+        - generic [ref=e934]:
+          - generic [ref=e935]: Senior QA Automation Tester
+          - generic [ref=e936]: ADMIN
+        - generic [ref=e937]: qa_tester@certverify.io
+        - button "Sign Out" [ref=e938] [cursor=pointer]
+    - generic [ref=e942]:
+      - banner [ref=e943]:
+        - generic [ref=e944]: Universal AI Certificate Verification
+        - link [ref=e947] [cursor=pointer]:
+          - /url: /upload
+          - button "New Verification" [ref=e948]
+      - main [ref=e952]:
+        - generic [ref=e953]:
+          - generic [ref=e954]:
+            - heading "Enterprise Administration Panel" [level=1] [ref=e955]
+            - paragraph [ref=e958]: Manage system users, view system-wide verification metrics, and inspect flagged credentials
+          - generic [ref=e959]:
+            - generic [ref=e960]:
+              - button "System Overview" [ref=e961] [cursor=pointer]
+              - button "User Management" [ref=e962] [cursor=pointer]
+              - button "All Certificates & Audits" [ref=e963] [cursor=pointer]
+            - generic [ref=e964]:
+              - generic [ref=e965]:
+                - generic [ref=e968]:
+                  - paragraph [ref=e969]: Registered Accounts
+                  - heading "2" [level=3] [ref=e970]
+                  - paragraph [ref=e971]: Platform wide
+                - generic [ref=e980]:
+                  - paragraph [ref=e981]: Total Certificates
+                  - heading "3" [level=3] [ref=e982]
+                  - paragraph [ref=e983]: Stored in database
+                - generic [ref=e990]:
+                  - paragraph [ref=e991]: Suspicious This Week
+                  - heading "1" [level=3] [ref=e992]
+                  - paragraph [ref=e993]: Flagged for inspection
+                - generic [ref=e999]:
+                  - paragraph [ref=e1000]: Avg Pipeline Duration
+                  - heading "26s" [level=3] [ref=e1001]
+                  - paragraph [ref=e1002]: Throughput speed
+              - generic [ref=e1007]:
+                - generic [ref=e1013]:
+                  - heading "System Upload Trajectory (30 Days)" [level=3] [ref=e1014]
+                  - paragraph [ref=e1015]: Daily verified document volume across all enterprise organizations
+                - img [ref=e1020]:
+                  - generic [ref=e1024]:
+                    - generic [ref=e1025]: 10/16
+                    - generic [ref=e1027]: 10/18
+                    - generic [ref=e1029]: 10/20
+                    - generic [ref=e1031]: 10/22
+                    - generic [ref=e1033]: 10/24
+                    - generic [ref=e1035]: 10/26
+                    - generic [ref=e1037]: 10/28
+                    - generic [ref=e1039]: 10/30
+                    - generic [ref=e1041]: 11/01
+                    - generic [ref=e1043]: 11/03
+                    - generic [ref=e1045]: 11/05
+                    - generic [ref=e1047]: 11/07
+                    - generic [ref=e1049]: 11/09
+                    - generic [ref=e1051]: 11/11
+                    - generic [ref=e1053]: 11/13
+                  - generic [ref=e1056]:
+                    - generic [ref=e1057]: "0"
+                    - generic [ref=e1059]: "1"
+                    - generic [ref=e1061]: "2"
+                    - generic [ref=e1063]: "3"
+                    - generic [ref=e1065]: "4"
+  - generic [aria-hidden] [ref=e257]: "0"

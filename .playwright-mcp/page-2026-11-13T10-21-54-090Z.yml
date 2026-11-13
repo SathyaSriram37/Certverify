@@ -1,0 +1,60 @@
+- generic [ref=e1]:
+  - generic [ref=e29]:
+    - complementary [ref=e30]:
+      - generic [ref=e31]:
+        - generic [ref=e37]:
+          - generic [ref=e38]: CertVerify AI
+          - text: Production SaaS
+        - navigation [ref=e39]:
+          - link "Dashboard" [ref=e40] [cursor=pointer]:
+            - /url: /dashboard
+          - link "Upload Certificate" [ref=e46] [cursor=pointer]:
+            - /url: /upload
+          - link "Batch Verification" [ref=e50] [cursor=pointer]:
+            - /url: /batch
+          - link "Developer & B2B API" [ref=e55] [cursor=pointer]:
+            - /url: /developer
+          - link "Verification History" [ref=e60] [cursor=pointer]:
+            - /url: /history
+          - generic [ref=e65]: Staff Administration
+          - link "Admin Panel" [ref=e66] [cursor=pointer]:
+            - /url: /admin
+      - generic [ref=e69]:
+        - generic [ref=e70]:
+          - generic [ref=e71]: Senior QA Automation Tester
+          - generic [ref=e72]: ADMIN
+        - generic [ref=e73]: qa_tester@certverify.io
+        - button "Sign Out" [ref=e74] [cursor=pointer]
+    - generic [ref=e78]:
+      - banner [ref=e79]:
+        - generic [ref=e80]: Universal AI Certificate Verification
+        - link [ref=e83] [cursor=pointer]:
+          - /url: /upload
+          - button "New Verification" [ref=e84]
+      - main [ref=e88]:
+        - generic [ref=e206]:
+          - generic [ref=e207]:
+            - heading "Developer & B2B Integration Suite" [level=1] [ref=e208]
+            - paragraph [ref=e213]: Integrate CertVerify AI verification directly into your EdTech platforms, ATS, or HRMS applications via REST APIs and Webhooks.
+          - generic [ref=e214]:
+            - generic [ref=e215]:
+              - button "API Keys" [ref=e216] [cursor=pointer]
+              - button "Webhooks" [ref=e221] [cursor=pointer]
+              - button "API Reference & Code" [active] [ref=e226] [cursor=pointer]
+            - generic [ref=e315]:
+              - generic [ref=e316]:
+                - heading "B2B Headless Verification API" [level=3] [ref=e317]
+                - paragraph [ref=e318]: Verify certificates programmatically via our high-speed endpoint.
+              - generic [ref=e319]:
+                - generic [ref=e320]:
+                  - generic [ref=e321]: POST
+                  - code [ref=e322]: /api/v1/developer/verify
+                - generic [ref=e323]:
+                  - button "cURL" [ref=e324] [cursor=pointer]
+                  - button "Python" [ref=e325] [cursor=pointer]
+                  - button "Node.js" [ref=e326] [cursor=pointer]
+                - generic [ref=e327]: "curl -X POST \"http://localhost:8000/api/v1/developer/verify\" \\ -H \"X-API-Key: cv_live_your_api_key_here\" \\ -F \"file=@certificate.pdf\""
+                - generic [ref=e329]:
+                  - generic [ref=e330]: "Response (201 Created):"
+                  - generic [ref=e331]: "{ \"certificate_id\": \"46cb134b-d243-4325-a2ea-561467036c1b\", \"job_id\": \"081251c6-447a-4e12-abb0-263e83583270\", \"filename\": \"certificate.pdf\", \"status\": \"PENDING\" }"
+  - generic [aria-hidden] [ref=e257]: "0"

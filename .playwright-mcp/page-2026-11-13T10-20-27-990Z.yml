@@ -1,0 +1,24 @@
+- generic [ref=e4]:
+  - generic [ref=e5]:
+    - heading "CertVerify AI" [level=3] [ref=e10]
+    - paragraph [ref=e11]: Sign in to access your certificate verification workspace
+  - generic [ref=e12]:
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - text: Work Email
+        - textbox "Work Email" [ref=e15]:
+          - /placeholder: name@company.com
+          - text: qa_tester@certverify.io
+      - generic [ref=e16]:
+        - generic [ref=e17]: Password
+        - generic [ref=e19]:
+          - textbox "Password" [ref=e20]:
+            - /placeholder: ••••••••
+            - text: Password123!
+          - button [ref=e21] [cursor=pointer]
+    - generic [ref=e25]:
+      - button "Signing in..." [disabled]
+      - generic [ref=e27]:
+        - text: Don't have an account?
+        - link "Register here →" [ref=e28] [cursor=pointer]:
+          - /url: /register

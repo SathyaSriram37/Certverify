@@ -1,0 +1,65 @@
+- generic [ref=e1]:
+  - generic [ref=e29]:
+    - complementary [ref=e30]:
+      - generic [ref=e31]:
+        - generic [ref=e37]:
+          - generic [ref=e38]: CertVerify AI
+          - text: Production SaaS
+        - navigation [ref=e39]:
+          - link "Dashboard" [ref=e40] [cursor=pointer]:
+            - /url: /dashboard
+          - link "Upload Certificate" [ref=e46] [cursor=pointer]:
+            - /url: /upload
+          - link "Batch Verification" [ref=e50] [cursor=pointer]:
+            - /url: /batch
+          - link "Developer & B2B API" [ref=e55] [cursor=pointer]:
+            - /url: /developer
+          - link "Verification History" [ref=e60] [cursor=pointer]:
+            - /url: /history
+          - generic [ref=e65]: Staff Administration
+          - link "Admin Panel" [ref=e66] [cursor=pointer]:
+            - /url: /admin
+      - generic [ref=e69]:
+        - generic [ref=e70]:
+          - generic [ref=e71]: Senior QA Automation Tester
+          - generic [ref=e72]: ADMIN
+        - generic [ref=e73]: qa_tester@certverify.io
+        - button "Sign Out" [ref=e74] [cursor=pointer]
+    - generic [ref=e78]:
+      - banner [ref=e79]:
+        - generic [ref=e80]: Universal AI Certificate Verification
+        - link [ref=e83] [cursor=pointer]:
+          - /url: /upload
+          - button "New Verification" [ref=e84]
+      - main [ref=e88]:
+        - generic [ref=e206]:
+          - generic [ref=e207]:
+            - heading "Developer & B2B Integration Suite" [level=1] [ref=e208]
+            - paragraph [ref=e213]: Integrate CertVerify AI verification directly into your EdTech platforms, ATS, or HRMS applications via REST APIs and Webhooks.
+          - generic [ref=e214]:
+            - generic [ref=e215]:
+              - button "API Keys" [ref=e216] [cursor=pointer]
+              - button "Webhooks" [active] [ref=e221] [cursor=pointer]
+              - button "API Reference & Code" [ref=e226] [cursor=pointer]
+            - generic [ref=e299]:
+              - generic [ref=e300]:
+                - heading "Real-Time Verification Webhooks" [level=3] [ref=e301]
+                - paragraph [ref=e302]: CertVerify AI delivers an HTTP POST request to your server as soon as an asynchronous certificate verification completes.
+              - generic [ref=e304]:
+                - generic [ref=e305]:
+                  - text: Webhook Delivery URL (HTTPS)
+                  - textbox "Webhook Delivery URL (HTTPS)" [ref=e306]:
+                    - /placeholder: https://api.yourdomain.com/webhooks/certverify
+                  - paragraph [ref=e307]: Must accept HTTP POST requests with JSON payload.
+                - generic [ref=e308]:
+                  - text: HMAC Signing Secret
+                  - textbox "HMAC Signing Secret" [ref=e309]:
+                    - /placeholder: Auto-generated or custom shared secret
+                  - paragraph [ref=e310]:
+                    - text: Used to verify incoming requests via the
+                    - code [ref=e311]: X-CertVerify-Signature
+                    - text: header.
+                - generic [ref=e312]:
+                  - button "Save Webhook Settings" [ref=e313] [cursor=pointer]
+                  - button "Send Test Ping" [disabled]
+  - generic [aria-hidden] [ref=e257]: "0"
