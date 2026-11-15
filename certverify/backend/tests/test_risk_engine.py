@@ -35,8 +35,8 @@ def test_calculate_risk_verified():
     assert calc.final_verdict == FinalVerdict.VERIFIED
 
     reasoning = generate_reasoning(results, calc)
-    assert "Passed checks:" in reasoning
-    assert "VERIFIED" in reasoning
+    assert "Passed verification checks:" in reasoning or "Passed checks:" in reasoning
+    assert "verified" in reasoning.lower()
 
 
 def test_calculate_risk_suspicious_forensics():

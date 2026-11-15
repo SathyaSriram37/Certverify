@@ -1,6 +1,18 @@
+import logging
 import os
-from typing import Optional
-from fastapi import APIRouter, Depends, File, HTTPException, Query, Request, UploadFile, status
+import uuid
+
+from fastapi import (
+    APIRouter,
+    BackgroundTasks,
+    Depends,
+    File,
+    HTTPException,
+    Query,
+    Request,
+    UploadFile,
+    status,
+)
 from sqlalchemy import desc, func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -10,13 +22,19 @@ from app.core.security import get_current_user
 from app.models.certificates import Certificate
 from app.models.users import User
 from app.models.verification import JobStatus, RiskAssessment, VerificationJob
-from app.schemas.certificates import CertificateListItem, PaginatedResponse, UploadResponse
+from app.schemas.certificates import (
+    CertificateListItem,
+    PaginatedResponse,
+    UploadResponse,
+)
 from app.services.audit_service import log_action
 from app.services.storage_service import storage_service
-from app.tasks.verification_task import run_verification
+from app.tasks.verification_task import execute_verification_pipeline, run_verification
+
+logger = logging.getLogger(__name__)
 
 try:
-    import magic
+    import magic  # type: ignore
     MAGIC_AVAILABLE = True
 except Exception:
     MAGIC_AVAILABLE = False
@@ -27,6 +45,7 @@ router = APIRouter()
 @router.post("/upload", response_model=UploadResponse, status_code=status.HTTP_201_CREATED)
 async def upload_certificate(
     request: Request,
+    background_tasks: BackgroundTasks,
     file: UploadFile = File(...),
     current_user: User = Depends(get_current_user),
     db: AsyncSession = Depends(get_db),
@@ -50,8 +69,8 @@ async def upload_certificate(
     if MAGIC_AVAILABLE:
         try:
             detected_mime = magic.from_buffer(content, mime=True)
-        except Exception:
-            pass
+        except Exception as mime_err:
+            logger.debug("magic MIME detection failed: %s", mime_err)
 
     if not detected_mime:
         detected_mime = file.content_type or "application/octet-stream"
@@ -99,8 +118,8 @@ async def upload_certificate(
         orig_file_path = os.path.join(storage_service.upload_dir, file.filename)
         with open(orig_file_path, "wb") as f:
             f.write(content)
-    except Exception:
-        pass
+    except Exception as file_err:
+        logger.warning("Could not persist local certificate copies for %s: %s", cert.id, file_err)
 
     # Create VerificationJob row
     job = VerificationJob(
@@ -114,12 +133,15 @@ async def upload_certificate(
     await db.refresh(cert)
     await db.refresh(job)
 
-    # Trigger async verification task
+    # Trigger async verification task: Celery worker (Primary) or FastAPI BackgroundTasks (Resilient Fallback)
     try:
         run_verification.delay(str(job.id), str(cert.id))
-    except Exception:
-        # Fallback if Redis/Celery worker is in detached/standalone mode
-        pass
+    except Exception as exc:
+        logger.warning(
+            "Celery broker unavailable (%s). Executing verification via in-process background task.",
+            exc,
+        )
+        background_tasks.add_task(execute_verification_pipeline, str(job.id), str(cert.id))
 
     # Audit log
     await log_action(
@@ -143,7 +165,7 @@ async def upload_certificate(
 async def list_certificates(
     page: int = Query(1, ge=1),
     size: int = Query(10, ge=1, le=100),
-    status_filter: Optional[JobStatus] = Query(None, alias="status"),
+    status_filter: JobStatus | None = Query(None, alias="status"),
     current_user: User = Depends(get_current_user),
     db: AsyncSession = Depends(get_db),
 ):
@@ -154,6 +176,13 @@ async def list_certificates(
         select(Certificate)
         .where(Certificate.user_id == current_user.id, Certificate.is_deleted == False)
     )
+
+    if status_filter:
+        base_query = base_query.where(
+            Certificate.id.in_(
+                select(VerificationJob.certificate_id).where(VerificationJob.status == status_filter)
+            )
+        )
 
     total_query = select(func.count()).select_from(base_query.subquery())
     total_res = await db.execute(total_query)
@@ -231,8 +260,16 @@ async def delete_certificate(
     current_user: User = Depends(get_current_user),
     db: AsyncSession = Depends(get_db),
 ):
+    try:
+        cert_uuid = uuid.UUID(certificate_id)
+    except (ValueError, TypeError):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Invalid certificate ID format",
+        )
+
     stmt = select(Certificate).where(
-        Certificate.id == certificate_id,
+        Certificate.id == cert_uuid,
         Certificate.is_deleted == False,
     )
     result = await db.execute(stmt)
@@ -251,7 +288,12 @@ async def delete_certificate(
             detail="Permission denied to delete this certificate",
         )
 
-    await storage_service.delete_file(cert.cloudinary_public_id)
+    if cert.cloudinary_public_id:
+        try:
+            await storage_service.delete_file(cert.cloudinary_public_id)
+        except Exception as storage_err:
+            logger.warning("Failed to delete storage file %s: %s", cert.cloudinary_public_id, storage_err)
+
     cert.is_deleted = True
     await db.commit()
 

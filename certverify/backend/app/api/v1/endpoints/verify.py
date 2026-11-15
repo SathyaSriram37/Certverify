@@ -1,6 +1,6 @@
 import uuid
 from typing import Optional
-from fastapi import APIRouter, Depends, HTTPException, Request, status
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Request, status
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -74,6 +74,51 @@ async def get_job_status(
     db: AsyncSession = Depends(get_db),
 ):
     job, _ = await _get_authorized_job(job_id, current_user, db)
+    return JobStatusResponse(
+        id=job.id,
+        job_id=job.id,
+        status=job.status,
+        progress_percentage=job.progress_percentage,
+        current_step=job.current_step,
+        error_message=job.error_message,
+    )
+
+
+@router.post("/{job_id}/retry", response_model=JobStatusResponse)
+async def retry_verification_job(
+    job_id: str,
+    background_tasks: BackgroundTasks,
+    request: Request,
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
+):
+    job, cert = await _get_authorized_job(job_id, current_user, db)
+
+    # Reset job status
+    job.status = JobStatus.PENDING
+    job.progress_percentage = 0
+    job.current_step = "Queued for re-analysis"
+    job.error_message = None
+    await db.commit()
+    await db.refresh(job)
+
+    # Dispatch verification task: Celery or BackgroundTasks
+    try:
+        from app.tasks.verification_task import run_verification
+        run_verification.delay(str(job.id), str(cert.id))
+    except Exception:
+        from app.tasks.verification_task import execute_verification_pipeline
+        background_tasks.add_task(execute_verification_pipeline, str(job.id), str(cert.id))
+
+    await log_action(
+        db=db,
+        user_id=current_user.id,
+        action="RETRY_VERIFICATION",
+        resource_type="VERIFICATION_JOB",
+        resource_id=str(job.id),
+        request=request,
+    )
+
     return JobStatusResponse(
         id=job.id,
         job_id=job.id,

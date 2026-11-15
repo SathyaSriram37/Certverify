@@ -30,8 +30,7 @@ from app.services.ai.logo_similarity import compare_logo
 from app.services.verification import company_intelligence, duplicate_detector, qr_verification, risk_engine, signature_verifier
 
 
-@celery_app.task(bind=True, name="run_verification", max_retries=2)
-def run_verification(self, job_id: str, certificate_id: str):
+def execute_verification_pipeline(job_id: str, certificate_id: str) -> None:
     temp_files = []
     with Session(sync_engine) as db:
         job = db.get(VerificationJob, job_id)
@@ -42,6 +41,7 @@ def run_verification(self, job_id: str, certificate_id: str):
         job.started_at = datetime.utcnow()
         job.progress_percentage = 5
         job.current_step = "Document Classification"
+        job.error_message = None
         db.commit()
 
         try:
@@ -92,25 +92,66 @@ def run_verification(self, job_id: str, certificate_id: str):
                     except Exception:
                         continue
 
-            # 2. If not found locally, download from remote URL with strict validation
+            # 2. If not found locally, download from remote URL with authenticated Cloudinary fallback
             if not found_local:
                 if not cert.file_url or not cert.file_url.startswith("http"):
                     raise RuntimeError(f"Certificate file not found locally and file_url is invalid: {cert.file_url}")
 
                 try:
                     r = httpx.get(cert.file_url, timeout=30.0, follow_redirects=True)
-                    # Detect Cloudinary 401 ACL Deny
-                    if r.status_code == 401 or (r.content and (r.content.startswith(b'{"success":false') or r.content.startswith(b'{"error"'))):
-                        err_msg = ""
-                        try:
-                            err_msg = r.json().get("error", {}).get("message", "")
-                        except Exception:
-                            pass
-                        raise RuntimeError(
-                            f"Cloudinary download error (HTTP {r.status_code}): {err_msg or 'deny or ACL failure'}. "
-                            "In Cloudinary Console (Settings -> Security -> Restricted Media Types), "
-                            "please uncheck 'PDF and ZIP files delivery' to allow PDF access, or re-upload the file."
-                        )
+                    
+                    # If Cloudinary returns 401 ACL deny or non-200, use authenticated private download
+                    is_cld_deny = (
+                        r.status_code == 401
+                        or (r.content and (r.content.startswith(b'{"success":false') or r.content.startswith(b'{"error"')))
+                    )
+                    if is_cld_deny or (r.status_code != 200 and "cloudinary" in cert.file_url.lower()):
+                        cld_pub_id = cert.cloudinary_public_id
+                        if not cld_pub_id and "res.cloudinary.com" in cert.file_url:
+                            import re
+                            m = re.search(r'/upload/(?:v\d+/)?(.+?)(?:\.[a-zA-Z0-9]+)?$', cert.file_url)
+                            if m:
+                                cld_pub_id = m.group(1)
+
+                        if cld_pub_id and settings.CLOUDINARY_API_SECRET:
+                            import cloudinary
+                            import cloudinary.utils
+                            cloudinary.config(
+                                cloud_name=settings.CLOUDINARY_CLOUD_NAME,
+                                api_key=settings.CLOUDINARY_API_KEY,
+                                api_secret=settings.CLOUDINARY_API_SECRET,
+                                secure=True,
+                            )
+                            fmt = file_ext.lstrip(".")
+                            # 1. Try image resource type
+                            try:
+                                priv_url = cloudinary.utils.private_download_url(
+                                    cld_pub_id,
+                                    fmt,
+                                    resource_type="image",
+                                    type="upload",
+                                )
+                                r_priv = httpx.get(priv_url, timeout=30.0, follow_redirects=True)
+                                if r_priv.status_code == 200 and len(r_priv.content) > 100:
+                                    r = r_priv
+                            except Exception:
+                                pass
+
+                            # 2. Try raw resource type if not 200
+                            if r.status_code != 200:
+                                try:
+                                    priv_url_raw = cloudinary.utils.private_download_url(
+                                        cld_pub_id,
+                                        fmt,
+                                        resource_type="raw",
+                                        type="upload",
+                                    )
+                                    r_raw = httpx.get(priv_url_raw, timeout=30.0, follow_redirects=True)
+                                    if r_raw.status_code == 200 and len(r_raw.content) > 100:
+                                        r = r_raw
+                                except Exception:
+                                    pass
+
                     if r.status_code != 200:
                         raise RuntimeError(f"HTTP {r.status_code} error downloading certificate from {cert.file_url}")
 
@@ -524,7 +565,7 @@ def run_verification(self, job_id: str, certificate_id: str):
                 job.error_message = str(exc)
                 job.completed_at = datetime.utcnow()
                 db.commit()
-            raise self.retry(exc=exc, countdown=30)
+            raise exc
         finally:
             for p in temp_files:
                 if os.path.exists(p):
@@ -532,4 +573,13 @@ def run_verification(self, job_id: str, certificate_id: str):
                         os.remove(p)
                     except Exception:
                         pass
+
+
+@celery_app.task(bind=True, name="run_verification", max_retries=2)
+def run_verification(self, job_id: str, certificate_id: str):
+    try:
+        execute_verification_pipeline(job_id, certificate_id)
+    except Exception as exc:
+        raise self.retry(exc=exc, countdown=15)
+
 

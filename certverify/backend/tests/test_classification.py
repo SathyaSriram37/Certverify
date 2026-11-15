@@ -5,14 +5,14 @@ from app.services.ai.entity_extractor import extract
 def test_classify_educational():
     text = "Stanford University certifies that John Doe completed Bachelor of Science in Computer Science with top CGPA."
     res = classify(text)
-    assert res.cert_type == "EDUCATIONAL"
+    assert res.cert_type == "ACADEMIC_DEGREE"
     assert res.confidence > 0.0
 
 
 def test_classify_employment():
     text = "Experience certificate: This is to certify that Alice worked with us as full time software engineer for the service period."
     res = classify(text)
-    assert res.cert_type == "EMPLOYMENT"
+    assert res.cert_type == "EMPLOYMENT_EXPERIENCE"
     assert res.confidence > 0.0
 
 

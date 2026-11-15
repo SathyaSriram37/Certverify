@@ -56,7 +56,7 @@ async def verify_company(
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     }
 
-    async with httpx.AsyncClient(timeout=10.0, follow_redirects=True, headers=headers) as client:
+    async with httpx.AsyncClient(timeout=5.0, follow_redirects=True, headers=headers) as client:
         # 1. Live Web Search via DuckDuckGo HTML endpoint
         discovered_urls: List[str] = []
         try:
@@ -205,7 +205,7 @@ async def verify_iso(org_name: str, ocr_text: str) -> ISOVerificationResult:
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
         }
         try:
-            async with httpx.AsyncClient(timeout=8.0, follow_redirects=True, headers=headers) as client:
+            async with httpx.AsyncClient(timeout=5.0, follow_redirects=True, headers=headers) as client:
                 r = await client.post(
                     "https://html.duckduckgo.com/html/",
                     data={"q": f"{org_name} ISO certification 9001"},

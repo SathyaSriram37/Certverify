@@ -1,2 +1,11 @@
 
 .sf/
+.playwright-mcp/
+*.log
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+certverify/backend/storage/reports/*
+!certverify/backend/storage/reports/.gitkeep
+

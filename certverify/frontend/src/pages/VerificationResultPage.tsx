@@ -14,7 +14,7 @@ import {
   ScanLine,
   ShieldAlert,
 } from 'lucide-react';
-import { getJobStatusApi, getResultsApi } from '../api/certificates';
+import { getJobStatusApi, getResultsApi, retryVerificationApi } from '../api/certificates';
 import { ResultsResponse, VerificationJob } from '../types';
 import { ModuleBreakdown } from '../components/verification/ModuleBreakdown';
 import { ReportDownloadButton } from '../components/verification/ReportDownloadButton';
@@ -113,6 +113,24 @@ export const VerificationResultPage: React.FC = () => {
     }
   }, [jobId]);
 
+  const [retrying, setRetrying] = useState(false);
+
+  const handleRetry = async () => {
+    if (!jobId) return;
+    setRetrying(true);
+    try {
+      const updated = await retryVerificationApi(jobId);
+      setJob(updated);
+      setResultsData(null);
+      loadData();
+    } catch (err: any) {
+      console.error('Failed to retry verification:', err);
+      alert(err.response?.data?.detail || 'Failed to trigger verification retry.');
+    } finally {
+      setRetrying(false);
+    }
+  };
+
   useEffect(() => {
     loadData();
     return () => {
@@ -154,6 +172,18 @@ export const VerificationResultPage: React.FC = () => {
         </Link>
         <div className="flex items-center gap-3">
           <span className="text-xs font-mono text-slate-400">JOB ID: {jobId}</span>
+          {(job?.status === 'FAILED' || job?.status === 'PENDING') && (
+            <Button
+              variant="default"
+              size="sm"
+              onClick={handleRetry}
+              disabled={retrying || loading}
+              className="h-8 text-xs bg-blue-600 hover:bg-blue-700 text-white"
+            >
+              <RefreshCw className={`h-3.5 w-3.5 mr-1.5 ${retrying ? 'animate-spin' : ''}`} />
+              {retrying ? 'Starting Re-analysis...' : 'Re-run Verification'}
+            </Button>
+          )}
           <Button
             variant="outline"
             size="sm"
@@ -274,8 +304,20 @@ export const VerificationResultPage: React.FC = () => {
         <Alert variant="destructive">
           <AlertTriangle className="h-5 w-5" />
           <AlertTitle className="text-base font-bold">Verification Pipeline Failed</AlertTitle>
-          <AlertDescription className="mt-1">
-            {job.error_message || 'An unexpected failure occurred while analyzing the certificate file.'}
+          <AlertDescription className="mt-2 space-y-3">
+            <p>{job.error_message || 'An unexpected failure occurred while analyzing the certificate file.'}</p>
+            <div>
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={handleRetry}
+                disabled={retrying}
+                className="bg-white text-rose-700 border-rose-300 hover:bg-rose-50"
+              >
+                <RefreshCw className={`h-3.5 w-3.5 mr-1.5 ${retrying ? 'animate-spin' : ''}`} />
+                {retrying ? 'Retrying...' : 'Retry Verification Now'}
+              </Button>
+            </div>
           </AlertDescription>
         </Alert>
       )}

@@ -42,3 +42,9 @@ export const getReportUrlApi = async (jobId: string): Promise<{ report_url: stri
   return response.data;
 };
 
+export const retryVerificationApi = async (jobId: string): Promise<VerificationJob> => {
+  const response = await apiClient.post<VerificationJob>(`/api/v1/verify/${jobId}/retry`);
+  return response.data;
+};
+
+
